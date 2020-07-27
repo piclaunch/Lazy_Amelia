@@ -13,7 +13,7 @@ Remove colons (:) from the booking from's label. Enjoy this work and share your 
 
 == Description ==
 
-Gives the space to use js hooks to wirite your code for Amelia booking page. 
+It Gives the space to use js hooks to wirite your code for Amelia booking page. 
 Remove colons from the booking from's label. Enjoy this work and share your feedback.
 
 Key Feature:

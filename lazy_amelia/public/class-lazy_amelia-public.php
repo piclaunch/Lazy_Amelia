@@ -129,7 +129,7 @@ if($_lazy_RemoveColon == 1) {
 		if( xl[i].className == 'el-form-item__label'){
 		console.log(xl[i].innerText);
 		var temp= xl[i].innerText;
-		xl[i].innerText = temp.slice(0, -1)}";
+		xl[i].innerText = temp.slice(0, -1)}}";
 
 	} else{
 		$code_REMOVE_COLON  = "
@@ -138,7 +138,7 @@ if($_lazy_RemoveColon == 1) {
 		for (i =0; i< xl.length;i++){
 		if( xl[i].className == 'el-form-item__label'){		
 		var temp= xl[i].innerText;
-		xl[i].innerText = temp.slice(0, -1)}";
+		xl[i].innerText = temp.slice(0, -1)}}";
 
 	}
 	$code_BeforeConfirmBookingLoaded = $code_BeforeConfirmBookingLoaded. $code_REMOVE_COLON;

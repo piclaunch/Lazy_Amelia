@@ -1,20 +1,23 @@
 === Plugin Name ===
 Contributors: (this should be a list of wordpress.org userid's)
 Donate link: https://github.com/piclaunch
-Tags: comments, spam
+Tags: ameliabooking, Amelia Booking
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 4.3
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Gives the space to use js hooks to wirite your code for Amelia booking page. 
+We  all love Amelia Booking, this plugin gives the space to use js hooks given by Amelia Booking to wirite your code for Booking page. 
 Remove colons (:) from the booking from's label. Enjoy this work and share your feedback.
 
 == Description ==
 
-Gives the space to use js hooks to wirite your code for Amelia booking page. 
-Remove colons from the booking from's label. Enjoy this work and share your feedback.
+We  all love Amelia Booking, this plugin gives the space to use js hooks given by Amelia Booking to wirite your code for Booking page. 
+Remove colons (:) from the booking from's label. Enjoy this work and share your feedback.
+
+Dependent on Pluing : [Ameliabooking](https://wordpress.org/plugins/ameliabooking/)
+Have question or issue : [Raise an issue on github](https://github.com/piclaunch/Lazy_Amelia/issues)
 
 Key Feature:
 
@@ -22,6 +25,10 @@ Key Feature:
 *   Write your javascript code for afterbooking loaded page.
 *   Ability to write your custom JS on the page.
 *   Setting to remove Colons (:) from the form's label 
+
+**Support:**
+* Write us at piclaunch@gmail.com with subject : "Lazy Amelia: <Open Text>"  or 
+* [Raise an issue on github](https://github.com/piclaunch/Lazy_Amelia/issues) 
 
     
 == Installation ==

@@ -74,7 +74,7 @@ class Lazy_amelia_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/lazy_amelia-public.css', array(), $this->version, 'all' );
+		// wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/lazy_amelia-public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -97,7 +97,7 @@ class Lazy_amelia_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/lazy_amelia-public.js', array( 'jquery' ), $this->version, false );
+		// wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/lazy_amelia-public.js', array( 'jquery' ), $this->version, false );
 
 	}
 
@@ -110,9 +110,12 @@ function lazy_amelia_loadjs($content){
 
 // NEW ST
 
+
 $_lazy_open = $this->lazy_amelia_options['_lazy_open'];
 $_lazy_debug =  $this->lazy_amelia_options['_lazy_debug']; 
 $_lazy_RemoveColon = $this->lazy_amelia_options['_lazy_RemoveColon']  ; 
+$_lazy_BeforeConfirmBookingLoaded = $this->lazy_amelia_options['_lazy_BeforeConfirmBookingLoaded']  ; 
+$_lazy_BeforeBookingLoaded = $this->lazy_amelia_options['_lazy_BeforeBookingLoaded']  ; 
 $precontent = "";
 $postcontent = "";
 $code_REMOVE_COLON = "";
@@ -123,26 +126,25 @@ $code_BeforeBookingLoaded = "";
 if($_lazy_RemoveColon == 1) {
 	if($_lazy_debug == 1){
 		$code_REMOVE_COLON  = "
-	var x = document.querySelector('#am-confirm-booking > div:nth-child(1) > form');
-	var xl = x.getElementsByTagName('label');
-	for (i =0; i< xl.length;i++){
-	console.log(xl[i].innerText);
-	var temp= xl[i].innerText;
-	xl[i].innerText = temp.slice(0, -1)
-	}";
+		var x = document.querySelector('#am-confirm-booking > div:nth-child(1) > form');
+		var xl = x.getElementsByTagName('label');
+		for (i =0; i< xl.length;i++){
+		if( xl[i].className == 'el-form-item__label'){
+		console.log(xl[i].innerText);
+		var temp= xl[i].innerText;
+		xl[i].innerText = temp.slice(0, -1)}}";
 
 	} else{
 		$code_REMOVE_COLON  = "
-	var x = document.querySelector('#am-confirm-booking > div:nth-child(1) > form');
-	var xl = x.getElementsByTagName('label');
-	for (i =0; i< xl.length;i++){
+		var x = document.querySelector('#am-confirm-booking > div:nth-child(1) > form');
+		var xl = x.getElementsByTagName('label');
+		for (i =0; i< xl.length;i++){
+		if( xl[i].className == 'el-form-item__label'){		
 		var temp= xl[i].innerText;
-	xl[i].innerText = temp.slice(0, -1)
-	}";
-	
+		xl[i].innerText = temp.slice(0, -1)}}";
 
 	}
-	$code_BeforeConfirmBookingLoaded = $code_BeforeConfirmBookingLoaded. $code_REMOVE_COLON;
+	$code_BeforeConfirmBookingLoaded = $code_REMOVE_COLON;
 }
 //Content Always gets executed 
 if( !empty($_lazy_open) ){
@@ -162,16 +164,16 @@ if( !empty($_lazy_BeforeConfirmBookingLoaded) ){
 
 
 $precontent = "<script type=\"text/javascript\">function beforeBookingLoaded(){"
-. $code_BeforeBookingLoaded 
+. strip_tags($code_BeforeBookingLoaded)
 . " } function  beforeConfirmBookingLoaded() {"
-. $code_BeforeConfirmBookingLoaded 
+. strip_tags($code_BeforeConfirmBookingLoaded )
 ."}</script>";
 
 # Final content 
 $newcontent =$precontent.$postcontent;
 /*	append the text file contents to the end of `the_content` */
-return $content . $newcontent;
-}
+return $content . preg_replace('/<\\?.*(\\?>|$)/Us', '',$newcontent);
+} 
 # Piclaunch Code End
 
 }
